@@ -32,7 +32,7 @@
 
 ## 安装
 
-1. 到 [Releases](../../releases) 下载最新压缩包，解压后得到一个内含 `manifest.json` 的文件夹（请勿删除该清单文件）。
+1. 到 [Releases](https://github.com/hanhanha-114514/naizhu-course-helper/releases) 下载最新压缩包，解压后得到一个内含 `manifest.json` 的文件夹（请勿删除该清单文件）。
 2. 地址栏打开 `edge://extensions`（Chrome 为 `chrome://extensions`），打开右上角**开发者模式**。
 3. 把文件夹拖进扩展管理页，或点"加载解压缩的扩展"并选中它。
 4. 打开课程页面，右侧出现粉色面板。
