@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7fa"/>
+      <stop offset="1" stop-color="#fdeef3"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#fdf4f7" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="icon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffc9d8"/>
+      <stop offset="1" stop-color="#f39ab5"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg)"/>
+  <text x="60" y="72" font-size="34" font-weight="700" fill="#5b3d47">核心功能</text>
+  <text x="60" y="104" font-size="17" fill="#9c7b86">挂机不暂停 · 学满自动换章 · 换页不用手</text>
+
+  <g>
+    <rect x="60" y="140" width="340" height="230" rx="20" fill="url(#card)" stroke="#f6d3dd"/>
+    <circle cx="108" cy="192" r="26" fill="url(#icon)"/>
+    <path d="M98 192h20M108 182v20" stroke="#fff" stroke-width="3" stroke-linecap="round" transform="rotate(45 108 192)"/>
+    <text x="150" y="198" font-size="21" font-weight="700" fill="#5b3d47">失焦持续播放</text>
+    <text x="84" y="252" font-size="15.5" fill="#7d5b66">切换窗口、切走标签页时视频不再被暂停，</text>
+    <text x="84" y="278" font-size="15.5" fill="#7d5b66">学习时长继续累计。</text>
+    <text x="84" y="316" font-size="14" fill="#a98c95">保护措施在确认开始播放 1 秒后才启用，</text>
+    <text x="84" y="340" font-size="14" fill="#a98c95">避免干扰播放器初始化造成黑屏。</text>
+  </g>
+
+  <g>
+    <rect x="430" y="140" width="340" height="230" rx="20" fill="url(#card)" stroke="#f6d3dd"/>
+    <circle cx="478" cy="192" r="26" fill="url(#icon)"/>
+    <path d="M468 192l8 8 14-16" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="520" y="198" font-size="21" font-weight="700" fill="#5b3d47">学时达标自动切章</text>
+    <text x="454" y="252" font-size="15.5" fill="#7d5b66">当前章节已完成学时达到平台要求后，</text>
+    <text x="454" y="278" font-size="15.5" fill="#7d5b66">先关闭播放器（平台在此刻记录学时），</text>
+    <text x="454" y="304" font-size="15.5" fill="#7d5b66">再进入下一个未完成章节。</text>
+    <text x="454" y="340" font-size="14" fill="#a98c95">已学完章节按课程 Id 本地登记，不会反复点同一章。</text>
+  </g>
+
+  <g>
+    <rect x="800" y="140" width="340" height="230" rx="20" fill="url(#card)" stroke="#f6d3dd"/>
+    <circle cx="848" cy="192" r="26" fill="url(#icon)"/>
+    <path d="M840 192h16M850 186l6 6-6 6" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="890" y="198" font-size="21" font-weight="700" fill="#5b3d47">课程列表自动翻页</text>
+    <text x="824" y="252" font-size="15.5" fill="#7d5b66">当前页课程全部完成后自动提交翻页，</text>
+    <text x="824" y="278" font-size="15.5" fill="#7d5b66">并校验列表内容真的变化后才继续查找。</text>
+    <text x="824" y="316" font-size="14" fill="#a98c95">翻页未生效或已到最后一页会明确提示，</text>
+    <text x="824" y="340" font-size="14" fill="#a98c95">不会误报"已全部完成"。</text>
+  </g>
+
+  <g>
+    <rect x="60" y="390" width="340" height="230" rx="20" fill="url(#card)" stroke="#f6d3dd"/>
+    <circle cx="108" cy="442" r="26" fill="url(#icon)"/>
+    <path d="M99 437v10h6l7 6v-22l-7 6h-6z" fill="#fff"/>
+    <text x="150" y="448" font-size="21" font-weight="700" fill="#5b3d47">音量与静音控制</text>
+    <text x="84" y="502" font-size="15.5" fill="#7d5b66">默认音量 0%，静音挂机不吵人；</text>
+    <text x="84" y="528" font-size="15.5" fill="#7d5b66">面板滑块随时调节，一键静音/取消。</text>
+    <text x="84" y="566" font-size="14" fill="#a98c95">播放器位于内层页面框架时，</text>
+    <text x="84" y="590" font-size="14" fill="#a98c95">音量设置也能直接作用到视频元素。</text>
+  </g>
+
+  <g>
+    <rect x="430" y="390" width="340" height="230" rx="20" fill="url(#card)" stroke="#f6d3dd"/>
+    <circle cx="478" cy="442" r="26" fill="url(#icon)"/>
+    <rect x="466" y="431" width="24" height="17" rx="3" fill="none" stroke="#fff" stroke-width="3"/>
+    <path d="M472 455h12" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <text x="520" y="448" font-size="21" font-weight="700" fill="#5b3d47">桌面进度浮层</text>
+    <text x="454" y="502" font-size="15.5" fill="#7d5b66">最小化浏览器后，桌面上仍显示</text>
+    <text x="454" y="528" font-size="15.5" fill="#7d5b66">学习计时与播放状态。</text>
+    <text x="454" y="566" font-size="14" fill="#a98c95">状态与播放器同步，</text>
+    <text x="454" y="590" font-size="14" fill="#a98c95">不用为了看进度把窗口切回来。</text>
+  </g>
+
+  <g>
+    <rect x="800" y="390" width="340" height="230" rx="20" fill="url(#card)" stroke="#f6d3dd"/>
+    <circle cx="848" cy="442" r="26" fill="url(#icon)"/>
+    <path d="M840 434h17M840 442h17M840 450h11" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <text x="890" y="448" font-size="21" font-weight="700" fill="#5b3d47">日志与一键诊断</text>
+    <text x="824" y="502" font-size="15.5" fill="#7d5b66">面板内置运行日志，记录播放器发现、</text>
+    <text x="824" y="528" font-size="15.5" fill="#7d5b66">播放/暂停事件、切章与翻页动作。</text>
+    <text x="824" y="566" font-size="14" fill="#a98c95">"复制诊断"导出播放器状态与页面结构，</text>
+    <text x="824" y="590" font-size="14" fill="#a98c95">卡住时能直接定位到哪一层出了问题。</text>
+  </g>
+
+  <text x="60" y="656" font-size="14" fill="#b79aa3">自动答题功能当前停用 · 不替用户完成考试与练习 · 所有数据仅保存在本地</text>
+</svg>

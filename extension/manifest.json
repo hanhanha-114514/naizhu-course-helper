@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "奶猪水课助手",
+  "version": "2.3.46",
+  "description": "为解决刷线上水课的烦恼，所以奶猪水课助手诞生了。支持窗口失焦后继续播放、自动切换章节、设定音量、最小化时桌面同步播放进度，以及自动答题功能。",
+  "permissions": ["storage", "scripting", "tabs", "alarms"],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "奶猪水课助手",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "background/service-worker.js"
+  }
+}

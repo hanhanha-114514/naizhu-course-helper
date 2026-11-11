@@ -1,0 +1,21 @@
+# 构建产物与本地包
+*.zip
+dist/
+build/
+
+# 未启用的本地原生宿主（含二进制与本机绝对路径，不入库）
+native/
+*.exe
+*.bat
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.log
+
+# Node
+node_modules/
+package-lock.json

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>奶猪水课助手</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #faf5f7;
+      --line: rgba(200, 170, 180, 0.2);
+      --text: #5a4a50;
+      --muted: #8a7078;
+      --faint: #b0989e;
+      --mint: #88c8a0;
+      --pink: #d4a0b0;
+      --pink-light: #e8c0cc;
+      --amber: #d4a860;
+      --font: "Segoe UI Variable", "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+      --mono: "Cascadia Mono", "Consolas", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      overflow: hidden;
+      height: 100%;
+      user-select: none;
+    }
+
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .brand-icon {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .brand-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand strong {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tag {
+      padding: 2px 6px;
+      border: 1px solid rgba(103, 232, 249, 0.2);
+      border-radius: 999px;
+      color: var(--pink);
+      background: rgba(103, 232, 249, 0.05);
+      font-family: var(--mono);
+      font-size: 6.5px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    .progress-wrap {
+      display: grid;
+      gap: 4px;
+    }
+
+    .progress-bar {
+      height: 5px;
+      border-radius: 3px;
+      background: rgba(103, 232, 249, 0.08);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #e8b0c0, #f0c8d4);
+      transition: width 400ms linear;
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+    .status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      font-size: 8.5px;
+      color: var(--faint);
+    }
+
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .status-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 6px rgba(118, 245, 199, 0.5);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    .status-dot.paused {
+      background: var(--amber);
+      box-shadow: 0 0 6px rgba(255, 200, 103, 0.4);
+      animation: none;
+    }
+
+    .status-dot.none {
+      background: var(--faint);
+      box-shadow: none;
+      animation: none;
+    }
+
+    .vol {
+      font-family: var(--mono);
+      font-size: 8px;
+      color: var(--muted);
+    }
+
+    .timer-row {
+      padding: 5px 8px;
+      border: 1px solid rgba(145, 244, 255, 0.06);
+      border-radius: 6px;
+      background: rgba(3, 13, 18, 0.5);
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--muted);
+      display: none;
+    }
+
+    .timer-row.visible {
+      display: block;
+    }
+
+    .timer-row em {
+      font-style: normal;
+      color: var(--pink);
+      font-weight: 600;
+    }
+
+    .empty {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--faint);
+      font-size: 9px;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">
+        <img src="../icons/icon32.png" alt="">
+      </span>
+      <strong id="siteTitle">奶猪水课助手</strong>
+    </div>
+    <span class="tag">DESKTOP</span>
+  </div>
+
+  <div id="content" style="display:none;">
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="time-row">
+        <span id="currentTime">--:--</span>
+        <span id="duration">--:--</span>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <div class="status-left">
+        <i class="status-dot" id="statusDot"></i>
+        <span id="statusText">等待播放…</span>
+      </div>
+      <span class="vol" id="volumeText">—</span>
+    </div>
+
+    <div class="timer-row" id="timerRow">
+      计时器：<em id="timerText">—</em>
+    </div>
+  </div>
+
+  <div class="empty" id="emptyMsg">等待播放器数据…</div>
+
+  <script src="overlay.js"></script>
+</body>
+</html>

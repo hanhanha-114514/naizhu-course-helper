@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>奶猪水课助手</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40" role="img">
+            <ellipse cx="20" cy="22" rx="13" ry="12" fill="none" stroke="url(#g1)" stroke-width="2.2"/>
+            <path d="M9 13 C6.5 7, 10.5 4, 13.5 9" stroke="url(#g1)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <path d="M31 13 C33.5 7, 29.5 4, 26.5 9" stroke="url(#g1)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <ellipse cx="20" cy="24.5" rx="5.5" ry="4.5" fill="none" stroke="#d4a0b0" stroke-width="2"/>
+            <circle cx="18" cy="24" r="1.2" fill="#d4a0b0"/>
+            <circle cx="22" cy="24" r="1.2" fill="#d4a0b0"/>
+            <circle cx="15" cy="19" r="1.5" fill="#e8b0c0"/>
+            <circle cx="25" cy="19" r="1.5" fill="#e8b0c0"/>
+            <defs>
+              <linearGradient id="g1" x1="5" y1="7" x2="35" y2="31" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#e8c0cc"/>
+                <stop offset="1" stop-color="#d4a0b0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div>
+          <h1>奶猪水课助手</h1>
+          <p>MILK PIG STUDY BUDDY</p>
+        </div>
+      </div>
+      <span class="tag">MILK PIG</span>
+    </header>
+
+    <section class="form-card">
+      <label class="field">
+        <span>网站地址</span>
+        <input id="siteUrl" type="text" spellcheck="false" autocomplete="off"
+               placeholder="https://your-site.example">
+      </label>
+      <p class="hint">支持 http:// 或 https://，例如 http://localhost:3000。保存时会请求该站点的访问权限。</p>
+
+      <div class="grid-2">
+        <label class="field">
+          <span>计时器选择器 <em>可选</em></span>
+          <input id="timerSelector" type="text" spellcheck="false" autocomplete="off"
+                 placeholder="#studyTimer">
+        </label>
+        <label class="field">
+          <span>播放器选择器 <em>可选</em></span>
+          <input id="playerSelector" type="text" spellcheck="false" autocomplete="off"
+                 placeholder="video">
+        </label>
+      </div>
+
+      <button class="primary" id="save" type="button">
+        <span id="saveText">保存并授权</span>
+        <span aria-hidden="true">→</span>
+      </button>
+    </section>
+
+    <section class="status-card" id="statusCard">
+      <div class="status-head">
+        <span class="site-name" id="siteLabel">尚未配置</span>
+        <span class="badge" id="permBadge">未授权</span>
+      </div>
+      <div class="status-url" id="siteUrlText">填写你的网站地址开始使用</div>
+      <div class="status-foot">
+        <span id="regText">面板未注册</span>
+        <span class="dot" id="statusDot"></span>
+      </div>
+      <div class="actions">
+        <button class="secondary" id="openSite" type="button">打开页面</button>
+        <button class="ghost" id="removeSite" type="button">移除授权</button>
+      </div>
+    </section>
+
+    <section class="form-card" id="autoAdvanceCard">
+      <h2 style="margin:0 0 6px;color:var(--muted);font-size:11px;font-weight:600;">自动切换下一章</h2>
+      <div class="grid-2">
+        <label class="field">
+          <span>目标学时（分钟）</span>
+          <input id="targetTime" type="number" min="0" step="1" spellcheck="false"
+                 placeholder="如 45">
+        </label>
+      </div>
+      <p class="hint">累计学时达到目标后，自动关闭弹窗并切换到下一章。留空或填 0 则不启用。</p>
+    </section>
+
+    <section class="form-card" id="pwCard">
+      <div class="pw-head" id="pwToggle">
+        <h2>自动填充密码</h2>
+        <span class="pw-arrow" id="pwArrow">▸</span>
+      </div>
+      <div class="pw-body" id="pwBody">
+        <label class="field">
+          <span>主密码</span>
+          <input id="masterPw" type="password" spellcheck="false" autocomplete="off"
+                 placeholder="用于加密/解密的主密码">
+        </label>
+        <p class="hint" id="pwHint">首次使用时设置主密码，后续需要输入同一主密码来解锁。</p>
+
+        <label class="field" id="loginField" style="display:none">
+          <span>登录密码</span>
+          <input id="loginPw" type="password" spellcheck="false" autocomplete="off"
+                 placeholder="要自动填充的密码">
+        </label>
+
+        <div class="pw-actions">
+          <button class="secondary" id="pwSave" type="button" style="display:none">保存密码</button>
+          <button class="primary" id="pwFill" type="button" style="display:none">
+            <span>自动填充</span>
+            <span aria-hidden="true">→</span>
+          </button>
+          <button class="ghost" id="pwReset" type="button" style="display:none">重置</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="capabilities">
+      <h2>面板会显示</h2>
+      <ul>
+        <li><i>01</i><span>页面可见性：visible / hidden</span></li>
+        <li><i>02</i><span>播放器状态：播放中 / 已暂停 / 当前时间</span></li>
+        <li><i>03</i><span>音量与静音状态，可拖动滑块设定音量</span></li>
+        <li><i>04</i><span>你指定的计时器元素文本</span></li>
+        <li><i>05</i><span>播放、暂停、音量与可见性事件日志</span></li>
+        <li><i>06</i><span>窗口失焦后继续播放、计时器继续计时</span></li>
+        <li><i>07</i><span>最小化时桌面悬浮窗同步播放进度</span></li>
+        <li><i>08</i><span>自动答题：调用 LLM API 分析题目并选择答案</span></li>
+      </ul>
+    </section>
+
+    <p class="message" id="message" role="status" aria-live="polite"></p>
+    <p class="note">
+      窗口失焦后继续播放与计时，可通过面板设定音量，最小化时桌面同步播放进度。请只测试你拥有或获得授权的网站。
+    </p>
+  </div>
+
+  <script src="crypto.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

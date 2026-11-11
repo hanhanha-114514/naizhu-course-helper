@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff8fb"/>
+      <stop offset="1" stop-color="#f9eef4"/>
+    </linearGradient>
+    <marker id="ar2" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#b06a84"/>
+    </marker>
+    <style>
+      .frame { fill:#ffffff; stroke:#e8c3cf; stroke-width:1.5; }
+      .inner { fill:#fff6f9; stroke:#f0cdd7; stroke-width:1.4; }
+      .iso { fill:#fdf0f5; stroke:#e08aa8; stroke-width:1.6; }
+      .main { fill:#f4f0ff; stroke:#a98fd6; stroke-width:1.6; }
+      .h { font-size:16px; font-weight:700; fill:#5b3d47; }
+      .s { font-size:13px; fill:#846470; }
+      .tag { font-size:12px; font-weight:700; fill:#a25b74; }
+      .tagm { font-size:12px; font-weight:700; fill:#6d4fa3; }
+      .link { stroke:#b06a84; stroke-width:1.6; fill:none; marker-end:url(#ar2); }
+      .linkb { stroke:#a98fd6; stroke-width:1.6; fill:none; marker-end:url(#ar2); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg3)"/>
+  <text x="60" y="50" font-size="30" font-weight="700" fill="#5b3d47">扩展在页面里的位置</text>
+  <text x="60" y="76" font-size="15" fill="#9c7b86">两个脚本分别工作在隔离世界与主世界，靠 DOM 与 postMessage 协作</text>
+
+  <rect class="frame" x="60" y="100" width="1080" height="470" rx="18"/>
+  <text class="h" x="84" y="130">顶层文档　MainPage.aspx</text>
+
+  <rect class="iso" x="90" y="150" width="300" height="200" rx="14"/>
+  <text class="tag" x="110" y="176">panel.js · ISOLATED world</text>
+  <text class="h" x="110" y="202">面板与决策层</text>
+  <text class="s" x="110" y="228">· 毛玻璃面板 UI、目标学时与进度</text>
+  <text class="s" x="110" y="252">· 计时判定：是否达到要求学时</text>
+  <text class="s" x="110" y="276">· 切章 / 翻页 / 重试与校验</text>
+  <text class="s" x="110" y="300">· 运行日志与一键复制诊断</text>
+  <text class="s" x="110" y="324">· 音量与静音指令下发</text>
+
+  <rect class="inner" x="420" y="150" width="330" height="150" rx="14"/>
+  <text class="h" x="440" y="178">#mainIframe</text>
+  <text class="s" x="440" y="202">LibraryStudyList.aspx · 课程列表</text>
+  <text class="s" x="440" y="228">· 每页 9 章 + 表头行</text>
+  <text class="s" x="440" y="252">· 章节链接 showframe(章节名, Id)</text>
+  <text class="s" x="440" y="276">· 分页表单 form1 / __EVENTTARGET</text>
+
+  <rect class="inner" x="780" y="150" width="330" height="390" rx="14"/>
+  <text class="h" x="800" y="178">#viewBox 弹窗容器（常驻静态节点）</text>
+  <text class="s" x="800" y="200">关闭链接触发平台记录学时</text>
+
+  <rect class="frame" x="800" y="216" width="290" height="300" rx="12"/>
+  <text class="h" x="818" y="242">#ExamView iframe</text>
+  <text class="s" x="818" y="264">LibraryStudy.aspx · 学习页</text>
+
+  <rect class="main" x="818" y="280" width="254" height="140" rx="12"/>
+  <text class="tagm" x="834" y="304">keep-alive.js · MAIN world</text>
+  <text class="s" x="834" y="328">· 播放守护：Worker 每 1.2s</text>
+  <text class="s" x="834" y="350">　被暂停就推回播放（可转静音）</text>
+  <text class="s" x="834" y="372">· 失焦保护：确认在播 1s 后才装</text>
+  <text class="s" x="834" y="394">· 音量 / 静音在本文档内直接生效</text>
+
+  <rect class="frame" x="818" y="432" width="254" height="70" rx="12"/>
+  <text class="h" x="834" y="458">Aliplayer　#J_prismPlayer</text>
+  <text class="s" x="834" y="482">内部 video 元素，src 为 blob: URL</text>
+
+  <rect class="inner" x="90" y="380" width="300" height="160" rx="14"/>
+  <text class="h" x="110" y="408">为什么不能直接调页面函数</text>
+  <text class="s" x="110" y="434">隔离世界里 showframe / closeView /</text>
+  <text class="s" x="110" y="458">easyDialog 恒为 undefined，</text>
+  <text class="s" x="110" y="482">但 DOM 是共享的，所以只做三件事：</text>
+  <text class="s" x="110" y="506">点链接 · 写表单 · 提交表单</text>
+
+  <line class="link" x1="390" y1="225" x2="420" y2="225"/>
+  <text class="s" x="392" y="216">读列表</text>
+
+  <polyline class="link" points="390,300 400,300 400,356 780,356"/>
+  <text class="s" x="560" y="348">跨 frame 直读 video：设置 volume / muted</text>
+
+  <polyline class="linkb" points="780,410 410,410 410,330 390,330"/>
+  <text class="s" x="520" y="426">postMessage：player-found / 状态回报</text>
+
+  <line class="link" x1="240" y1="350" x2="240" y2="380"/>
+  <text class="s" x="250" y="372">决策依据</text>
+
+  <rect x="60" y="596" width="1080" height="96" rx="16" fill="#fff5f8" stroke="#f2d2db"/>
+  <text class="h" x="82" y="624">关键约束</text>
+  <text class="s" x="82" y="650">· 过早覆盖 document.hidden / visibilityState / hasFocus 会干扰 Aliplayer 初始化并导致黑屏，因此失焦保护必须延后到确认播放之后。</text>
+  <text class="s" x="82" y="672">· 跨 frame 的 instanceof HTMLMediaElement 恒为 false，元素判定只能看 tagName；video 属于内层文档，操作要落到那一层的 DOM 上。</text>
+</svg>
